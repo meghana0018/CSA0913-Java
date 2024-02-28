@@ -1,0 +1,12 @@
+import java.util.*;
+public class sum{
+public static void main(String arg[])
+{
+int M=4;
+int N=5;
+for(int i=1;i<=N;i++)
+{
+ System.out.println(i+"x"+M+"="+(i*M));
+}
+}
+}
