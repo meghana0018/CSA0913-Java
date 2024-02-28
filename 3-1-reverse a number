@@ -1,0 +1,12 @@
+Class reverse{
+ Public static void main(String[] args) {
+ Int num=14567,reversed = 0;
+ System.out.println(“Original Number: “ + num);
+ While(num != 0) {
+ Int digit = num % 10;
+ Reversed = reversed * 10 + digit;
+ Num /= 10;
+ }
+ System.out.println(“Reversed Number: “ + reversed);
+ }
+}
