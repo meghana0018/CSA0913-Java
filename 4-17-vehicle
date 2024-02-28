@@ -1,0 +1,85 @@
+class Vehicle {
+    String licensePlate;
+    String owner;
+
+    // Constructor for Vehicle class
+    Vehicle(String licensePlate, String owner) {
+        this.licensePlate = licensePlate;
+        this.owner = owner;
+    }
+
+    // Method to display information about the vehicle
+    void displayInfo() {
+        System.out.println("License Plate: " + licensePlate);
+        System.out.println("Owner: " + owner);
+    }
+}
+
+class Car extends Vehicle {
+    int numberOfDoors;
+
+    // Constructor for Car class
+    Car(String licensePlate, String owner, int numberOfDoors) {
+        super(licensePlate, owner);
+        this.numberOfDoors = numberOfDoors;
+    }
+
+    // Method to display additional information about the car
+    void displayCarInfo() {
+        System.out.println("Number of Doors: " + numberOfDoors);
+    }
+}
+
+class Truck extends Vehicle {
+    double payloadCapacity;
+
+    // Constructor for Truck class
+    Truck(String licensePlate, String owner, double payloadCapacity) {
+        super(licensePlate, owner);
+        this.payloadCapacity = payloadCapacity;
+    }
+
+    // Method to display additional information about the truck
+    void displayTruckInfo() {
+        System.out.println("Payload Capacity: " + payloadCapacity + " tons");
+    }
+}
+
+class Motorcycle extends Vehicle {
+    boolean hasSidecar;
+
+    // Constructor for Motorcycle class
+    Motorcycle(String licensePlate, String owner, boolean hasSidecar) {
+        super(licensePlate, owner);
+        this.hasSidecar = hasSidecar;
+    }
+
+    // Method to display additional information about the motorcycle
+    void displayMotorcycleInfo() {
+        System.out.println("Has Sidecar: " + (hasSidecar ? "Yes" : "No"));
+    }
+}
+
+public class VehicleInheritanceExample {
+    public static void main(String[] args) {
+        // Create instances of each subclass
+        Car myCar = new Car("ABC123", "John Doe", 4);
+        Truck myTruck = new Truck("XYZ789", "Jane Smith", 5.5);
+        Motorcycle myMotorcycle = new Motorcycle("MNO456", "Alice Johnson", true);
+
+        // Display information for each vehicle
+        System.out.println("Car Information:");
+        myCar.displayInfo();
+        myCar.displayCarInfo();
+        System.out.println();
+
+        System.out.println("Truck Information:");
+        myTruck.displayInfo();
+        myTruck.displayTruckInfo();
+        System.out.println();
+
+        System.out.println("Motorcycle Information:");
+        myMotorcycle.displayInfo();
+        myMotorcycle.displayMotorcycleInfo();
+    }
+}
