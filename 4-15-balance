@@ -1,0 +1,79 @@
+import java.util.Scanner;
+
+class BankAccount {
+    String depositorName;
+    long accountNumber;
+    String accountType;
+    double balance;
+
+    // Method to read account details
+    void readAccountDetails() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter account number: ");
+        accountNumber = scanner.nextLong();
+
+        scanner.nextLine();  // Consume the newline character
+
+        System.out.print("Enter depositor name: ");
+        depositorName = scanner.nextLine();
+
+        System.out.print("Enter account type (Savings/Current): ");
+        accountType = scanner.nextLine();
+    }
+
+    // Method to deposit an amount
+    void depositAmount(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Amount deposited successfully.");
+        } else {
+            System.out.println("Invalid deposit amount.");
+        }
+    }
+
+    // Method to withdraw an amount
+    void withdrawAmount(double amount) {
+        if (amount > 0) {
+            double minimumBalance = 500.00;
+            if (balance - amount >= minimumBalance) {
+                balance -= amount;
+                System.out.println("Amount withdrawn successfully.");
+            } else {
+                System.out.println("Insufficient balance. Minimum balance should be maintained.");
+            }
+        } else {
+            System.out.println("Invalid withdrawal amount.");
+        }
+    }
+
+    // Method to display balance
+    void displayBalance() {
+        System.out.println("Current Balance: Rs. " + balance);
+    }
+}
+
+public class BankAccountExample {
+    public static void main(String[] args) {
+        // Create a BankAccount object
+        BankAccount account = new BankAccount();
+
+        // Read account details
+        account.readAccountDetails();
+
+        // Display initial balance
+        account.displayBalance();
+
+        // Deposit an amount
+        account.depositAmount(1000.00);
+
+        // Display balance after deposit
+        account.displayBalance();
+
+        // Withdraw an amount
+        account.withdrawAmount(300.00);
+
+        // Display balance after withdrawal
+        account.displayBalance();
+    }
+}
