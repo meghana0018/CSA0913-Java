@@ -1,0 +1,80 @@
+import java.util.Scanner;
+
+// Base class representing a student
+class Student {
+    String name;
+    int[] marks = new int[6];  // Assuming six subjects
+
+    // Method to read marks for each subject
+    void readMarks() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the marks in Python: ");
+        marks[0] = scanner.nextInt();
+
+        System.out.print("Enter the marks in C Programming: ");
+        marks[1] = scanner.nextInt();
+
+        System.out.print("Enter the marks in Mathematics: ");
+        marks[2] = scanner.nextInt();
+
+        System.out.print("Enter the marks in Physics: ");
+        marks[3] = scanner.nextInt();
+
+        System.out.print("Enter the marks in Chemistry: ");
+        marks[4] = scanner.nextInt();
+
+        System.out.print("Enter the marks in Professional Ethics: ");
+        marks[5] = scanner.nextInt();
+    }
+
+    // Method to calculate total marks
+    int calculateTotal() {
+        int total = 0;
+        for (int mark : marks) {
+            total += mark;
+        }
+        return total;
+    }
+
+    // Method to calculate aggregate
+    double calculateAggregate() {
+        int totalMarks = calculateTotal();
+        return (double) totalMarks / marks.length;
+    }
+}
+
+// Derived class representing a student's grades
+class StudentGrades extends Student {
+    // Method to display the grade based on aggregate
+    void displayGrade() {
+        double aggregate = calculateAggregate();
+        System.out.println("Total= " + calculateTotal());
+        System.out.println("Aggregate = " + String.format("%.2f", aggregate));
+
+        if (aggregate > 75) {
+            System.out.println("Class: DISTINCTION");
+        } else if (aggregate >= 60 && aggregate <= 75) {
+            System.out.println("Class: FIRST DIVISION");
+        } else if (aggregate >= 50 && aggregate < 60) {
+            System.out.println("Class: SECOND DIVISION");
+        } else if (aggregate >= 40 && aggregate < 50) {
+            System.out.println("Class: THIRD DIVISION");
+        } else {
+            System.out.println("Class: FAIL");
+        }
+    }
+}
+
+public class StudentGradesExample {
+    public static void main(String[] args) {
+        // Create a StudentGrades object
+        StudentGrades student = new StudentGrades();
+
+        // Read marks for each subject
+        student.readMarks();
+
+        // Display the student's grade
+        student.displayGrade();
+    }
+}
