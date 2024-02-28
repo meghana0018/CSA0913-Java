@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+class Student {
+    String name;
+    int registerNumber;
+    int[] subjectMarks = new int[5];  // Assuming there are five subjects
+
+    // Constructor to initialize student details
+    Student(String name, int registerNumber, int[] subjectMarks) {
+        this.name = name;
+        this.registerNumber = registerNumber;
+        this.subjectMarks = subjectMarks;
+    }
+
+    // Method to calculate total marks
+    int calculateTotal() {
+        int total = 0;
+        for (int mark : subjectMarks) {
+            total += mark;
+        }
+        return total;
+    }
+
+    // Method to calculate average marks
+    double calculateAverage() {
+        int total = calculateTotal();
+        return (double) total / subjectMarks.length;
+    }
+
+    // Method to display student details, marks, and average
+    void displayDetails() {
+        System.out.println("Student Name: " + name);
+        System.out.println("Register Number: " + registerNumber);
+        System.out.println("Subject Marks: " + java.util.Arrays.toString(subjectMarks));
+        System.out.println("Total Marks: " + calculateTotal());
+        System.out.println("Average Marks: " + calculateAverage());
+    }
+}
+
+public class StudentDetailsExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input student details and subject marks
+        System.out.print("Enter student name: ");
+        String name = scanner.nextLine();
+
+        System.out.print("Enter register number: ");
+        int registerNumber = scanner.nextInt();
+
+        int[] subjectMarks = new int[5];
+        System.out.println("Enter marks for five subjects:");
+
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Subject " + (i + 1) + ": ");
+            subjectMarks[i] = scanner.nextInt();
+        }
+
+        // Create a Student object with the entered details
+        Student student = new Student(name, registerNumber, subjectMarks);
+
+        // Display student details, marks, and average
+        student.displayDetails();
+    }
+}
